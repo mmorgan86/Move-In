@@ -1,0 +1,60 @@
+header {
+  background-color: $darkpurple;
+  color: $offwhite;
+  overflow: auto;
+  padding: 20px 15px;
+
+  .logo {
+    float: left;
+  }
+  nav {
+    text-align: center;
+    &.navbar-light {
+      background: inherit;
+      color: white;
+
+      .navbar-brand {
+        color: white;
+      }
+    }
+
+    a {
+      font-size: 0.9rem;
+      color: $offwhite;
+      text-decoration: none;
+      padding: 10px 20px;
+      text-transform: capitalize;
+      font-weight: 300;
+
+      &:hover {
+        color: $pink;
+      }
+      &.register-btn {
+        background: $pink;
+        padding: 7px 20px;
+        text-align: center;
+        color: $offwhite;
+        border-radius: 5px;
+        &:hover {
+          color: $darkpurple;
+        }
+      }
+    }
+    .collapse {
+      .navbar-nav {
+        a {
+          &.nav-link {
+            color: white;
+            &.active {
+              color: $pink !important;
+
+              &:hover {
+                color: $pink !important;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

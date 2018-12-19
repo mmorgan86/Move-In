@@ -1,35 +1,242 @@
-header {
-  background-color: $darkpurple;
-  color: $offwhite;
-  overflow: auto;
-  padding: 20px 15px;
+#listings {
+  width: 70%;
+  float: left;
+  display: inline-block;
+  padding: 15px;
+  background: $offwhite;
 
-  .logo {
-    float: left;
+  .search-area {
+    input[type='text'] {
+      width: 70%;
+      background: transparent;
+      font-size: 2rem;
+      border: none;
+      border-bottom: 1px solid $darkgray;
+      margin-bottom: 20px;
+      font-weight: 100;
+      color: $darkgray;
+    }
   }
-  nav {
-    float: right;
 
-    a {
-      font-size: 0.9rem;
-      color: $offwhite;
-      text-decoration: none;
-      padding: 10px 20px;
-      text-transform: capitalize;
-      font-weight: 300;
+  .sortby-area {
+    margin-bottom: 20px;
+
+    .results {
+      font-size: 0.8rem;
+      color: $darkgray;
+      display: inline-block;
+    }
+
+    .sort-options {
+      float: right;
+      select {
+        font-size: 0.9rem;
+        font-weight: 300;
+        border: 1px solid $lightgray;
+        background: transparent;
+        padding: 1px;
+        display: inline-block;
+        vertical-align: top;
+      }
+      .view {
+        display: inline-block;
+
+        .fas {
+          margin-right: 15px;
+          font-size: 1.5rem;
+        }
+      }
+    }
+  }
+
+  .listings-results {
+    margin-bottom: 60px;
+
+    .listing {
+      margin-bottom: 30px;
+      background: #fff;
+      border-radius: 5px;
+      -webkit-box-shadow: 0px 9px 54px -4px rgba(173, 173, 173, 1);
+      -moz-box-shadow: 0px 9px 54px -4px rgba(173, 173, 173, 1);
+      box-shadow: 0px 9px 54px -4px rgba(173, 173, 173, 1);
+    }
+
+    .listing-img {
+      color: $lightgray;
+      padding: 15px;
+      position: relative;
+      -webkit-background-size: cover;
+      -moz-background-size: cover;
+      -o-background-size: cover;
+      background-size: cover;
+      min-height: 200px;
+      -webkit-border-top-left-radius: 5px;
+      -webkit-border-top-right-radius: 5px;
+      -moz-border-radius-topleft: 5px;
+      -moz-border-radius-topright: 5px;
+      border-top-left-radius: 5px;
+      border-top-right-radius: 5px;
 
       &:hover {
-        color: $pink;
-      }
-      &.register-btn {
-        background: $pink;
-        padding: 7px 20px;
-        text-align: center;
-        color: $offwhite;
-        border-radius: 5px;
-        &:hover {
-          color: $darkpurple;
+        .details {
+          opacity: 1;
         }
+        .address {
+          opacity: 0;
+        }
+      }
+
+      .address {
+        font-size: 1.3rem;
+        text-transform: capitalize;
+        position: absolute;
+        bottom: 20px;
+        opacity: 1;
+        transition: all 0.5s ease-in-out;
+        text-shadow: 0px 3px 5px rgb(20, 20, 20);
+      }
+
+      .details {
+        transition: all 0.5s ease-in-out;
+        opacity: 0;
+        position: absolute;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        right: 0;
+        padding: 15px;
+        -webkit-border-top-left-radius: 5px;
+        -webkit-border-top-right-radius: 5px;
+        -moz-border-radius-topleft: 5px;
+        -moz-border-radius-topright: 5px;
+        border-top-left-radius: 5px;
+        border-top-right-radius: 5px;
+        /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#070ff4+0,3083e8+98 */
+        background: rgba(7, 15, 244, 0.8); /* Old browsers */
+        background: -moz-linear-gradient(
+          -45deg,
+          rgba(7, 15, 244, 0.8) 0%,
+          rgba(48, 131, 232, 0.8) 98%
+        ); /* FF3.6-15 */
+        background: -webkit-linear-gradient(
+          -45deg,
+          rgba(7, 15, 244, 0.8) 0%,
+          rgba(48, 131, 232, 0.8) 98%
+        ); /* Chrome10-25,Safari5.1-6 */
+        background: linear-gradient(
+          135deg,
+          rgba(7, 15, 244, 0.8) 0%,
+          rgba(48, 131, 232, 0.8) 98%
+        ); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+        filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#070ff4', endColorstr='#3083e8',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+
+        .user-img {
+          margin: 10px;
+          width: 60px;
+          height: 60px;
+          border-radius: 2%;
+          border: 2px solid white;
+          display: inline-block;
+          float: left;
+          background: url('https://bootdey.com/img/Content/avatar/avatar7.png');
+          // no-repeat center center;
+          background-size: cover;
+        }
+        .user-details {
+          display: block;
+          margin-top: 0.6rem;
+          .user-name {
+            font-size: 1.2rem;
+            font-weight: 300;
+            display: block;
+            color: rgba(255, 255, 255, 1);
+            margin-bottom: 5px;
+          }
+          .post-date {
+            display: block;
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 1.2rem;
+          }
+        }
+
+        .listing-details {
+          margin: 20px;
+
+          .back-icon {
+            font-size: 20px;
+            display: inline-block;
+            margin-right: 5px;
+
+            span {
+              font-size: 1.3rem;
+              font-weight: 300;
+              display: inline-block;
+              vertical-align: top;
+              position: relative;
+              top: 2px;
+            }
+            .square-feet {
+              margin-bottom: 20px;
+            }
+          }
+        }
+      }
+    }
+    .bottom-info {
+      padding: 20px;
+      .price {
+        font-size: 1rem;
+        display: block;
+        margin-bottom: 10px;
+        color: $darkgray;
+      }
+
+      .location {
+        display: block;
+        font-size: 1.2rem;
+        color: $gray;
+      }
+    }
+  }
+}
+
+.view-btn {
+  position: absolute;
+  bottom: 3rem;
+  right: 3rem;
+  background: black;
+  padding: 8px;
+  font-size: 0.9rem;
+  border-radius: 5px;
+  float: right;
+  max-width: 100px;
+  transition: background 0.2s ease-in-out;
+  &:hover {
+    background: $pink;
+    cursor: pointer;
+  }
+}
+
+#pagination {
+  text-align: center;
+  .pages {
+    margin: 0 auto;
+    display: inline-block;
+    -background: white;
+    -webkit-box-shadow: 0px 9px 54px -4px rgba(173, 173, 173, 1);
+    -moz-box-shadow: 0px 9px 54px -4px rgba(173, 173, 173, 1);
+    box-shadow: 0px 9px 54px -4px rgba(173, 173, 173, 1);
+
+    li {
+      display: inline-block;
+      padding: 20px 30px;
+
+      &:hover,
+      &.active {
+        color: white;
+        font-weight: 700;
+        background: $pink;
+        cursor: pointer;
       }
     }
   }
