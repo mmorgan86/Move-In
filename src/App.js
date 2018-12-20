@@ -24,10 +24,25 @@ class App extends Component {
         gym: false,
         pool: false,
         listingsData,
-        filteredData: listingsData
+        filteredData: listingsData,
+        populateFormsData: '',
+        sortby: 'price-low',
+        view: 'long'
     }
     this.handleChange = this.handleChange.bind(this);
     this.filteredData = this.filteredData.bind(this);
+    this.populateForms = this.populateForms.bind(this);
+    this.changeView = this.changeView.bind(this);
+  }
+
+  componentWillMount () {
+    let listingsData = this.state.listingsData.sort((a, b) => {
+      return a.price - b.price
+    })
+
+    this.setState({
+      listingsData
+    })
   }
 
   handleChange(e) {
@@ -39,6 +54,12 @@ class App extends Component {
     }, () => {
       console.log(this.state)
       this.filteredData()
+    })
+  }
+
+  changeView(viewName) {
+    this.setState({
+      view: viewName
     })
   }
 
@@ -59,19 +80,80 @@ class App extends Component {
       })
     }
 
+    if(this.state.sortby === 'price-low') {
+      newData = newData.sort((a, b) => {
+        return a.price - b.price
+      })
+    }
+
+    if(this.state.sortby === 'price-high') {
+      newData = newData.sort((a, b) => {
+        return b.price - a.price
+      })
+    }
+
     this.setState({
       filteredData: newData
     })
   }
 
+  populateForms() {
+    // city
+    let cities = this.state.listingsData.map((item) => {
+      return item.city
+    })
+    cities = new Set(cities)
+    cities = [...cities]
+
+    cities = cities.sort()
+
+
+
+    // homeType
+    let homeTypes = this.state.listingsData.map((item) => {
+      return item.homeType
+    })
+    homeTypes = new Set(homeTypes)
+    homeTypes = [...homeTypes]
+
+    homeTypes = homeTypes.sort()
+
+    //bedrooms
+    let rooms = this.state.listingsData.map((item) => {
+      return item.bedrooms
+    })
+    rooms = new Set(rooms)
+    rooms = [...rooms]
+
+    rooms = rooms.sort();
+
+    this.setState({
+      populateFormsData: {
+        homeTypes,
+        rooms,
+        cities
+      }
+    }, () => {
+      console.log(this.state)
+    })
+  }
+  
   render() {
     const { filteredData } = this.state;
     return (
       <div>
         <Header />
         <section id="content-area">
-          <Filter handleChange={this.handleChange} globalState={this.state}/>
-          <Listings listingsData={filteredData}/>
+          <Filter 
+            handleChange={this.handleChange} globalState={this.state}
+            populateAction={this.populateForms}
+          />
+          <Listings 
+            handleChange={this.handleChange} 
+            globalState={this.state}
+            listingsData={filteredData}
+            changeView={this.changeView}  
+          />
         </section>
       </div>
     )

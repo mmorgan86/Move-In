@@ -90,6 +90,22 @@ let listingsData = [
     ],
     homeType: 'House',
     image: 'https://ssl.cdn-redfin.com/photo/102/mbphoto/673/genMid.2189673_B.jpg'
+  },
+  {
+    address: '189 Walnut Street',
+    city: 'Cary',
+    state: 'NC',
+    zipcode: 27901,
+    bedrooms: 6,
+    price: 435000,
+    squarefeet: 3200,
+    extras: [
+      'basement',
+      'gym',,
+      'pool'
+    ],
+    homeType: 'House',
+    image: 'http://mclean.construction/cms/wp-content/uploads/2015/01/home-builder-cary-nc.jpg'
   }
 ]
 

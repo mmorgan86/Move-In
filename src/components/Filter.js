@@ -1,6 +1,44 @@
 import React, { Component } from 'react';
 
 class Filter extends Component {
+  constructor() {
+    super()
+    this.cities = this.cities.bind(this);
+    this.homeTypes = this.homeTypes.bind(this);
+    this.rooms = this.rooms.bind(this);
+  }
+
+  componentWillMount() {
+    this.props.populateAction();
+  }
+
+  cities() {
+    if(this.props.globalState.populateFormsData.cities !== undefined) {
+      const { cities } = this.props.globalState.populateFormsData;
+      return cities.map((item, i)=> {
+        return <option key={item + i} value={item}>{item}</option>
+      })
+    }
+  }
+
+  homeTypes() {
+    if(this.props.globalState.populateFormsData.homeTypes !== undefined) {
+      const { homeTypes } = this.props.globalState.populateFormsData;
+      return homeTypes.map((item, i)=> {
+        return <option key={item + i} value={item}>{item}</option>
+      })
+    }
+  }
+
+  rooms() {
+      if(this.props.globalState.populateFormsData.rooms !== undefined) {
+      const { rooms } = this.props.globalState.populateFormsData;
+      return rooms.map((item, i)=> {
+        return <option key={item + i} value={item}>{item}+ BR</option>
+      })
+    }
+  }
+
   render() {
     const { handleChange } = this.props;
     return (
@@ -9,26 +47,18 @@ class Filter extends Component {
           <h4>Filter</h4>
           <label hrmlfor="city">City</label>
           <select name="city" className="city" onChange={handleChange}>
-            <option>All Cities</option>
-            <option>Raleigh</option>
-            <option>Clayton</option>
-            <option>Durham</option>
-            <option>Chapel Hill</option>
+          <option value='All'>All Cities</option>
+            {this.cities()}
           </select>
           <label hrmlfor="homeTypes">Home Type</label>
           <select name="homeType" className="city" onChange={handleChange}>
-            <option>All Homes</option>
-            <option>House</option>
-            <option>Townhouse</option>
-            <option>Apartment</option>
+            <option value='All'>All Homes</option>
+            {this.homeTypes()}            
           </select>
           <label hrmlfor="bedrooms">Bedrooms</label>
           <select name="bedrooms" className="bedrooms" onChange={handleChange}>
-            <option value="0">0+ BR</option>
-            <option value="1">1+ BR</option>
-            <option value="2">2+ BR</option>
-            <option value="3">3+ BR</option>
-            <option value="4">4+ BR</option>
+            <option value='0'>0+</option>
+            {this.rooms()}
           </select>
           <div className="filters price">
             <span className="title">Price </span>
