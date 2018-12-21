@@ -1,5 +1,5 @@
 header {
-  background-color: $darkpurple;
+  background-color: $mainColor;
   color: $offwhite;
   overflow: auto;
   padding: 20px 15px;
@@ -27,16 +27,16 @@ header {
       font-weight: 300;
 
       &:hover {
-        color: $pink;
+        color: $secondary;
       }
       &.register-btn {
-        background: $pink;
+        background: $secondary;
         padding: 7px 20px;
         text-align: center;
         color: $offwhite;
         border-radius: 5px;
         &:hover {
-          color: $darkpurple;
+          color: $mainColor;
         }
       }
     }
@@ -46,10 +46,10 @@ header {
           &.nav-link {
             color: white;
             &.active {
-              color: $pink !important;
+              color: $secondary !important;
 
               &:hover {
-                color: $pink !important;
+                color: $secondary !important;
               }
             }
           }

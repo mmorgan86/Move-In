@@ -113,7 +113,7 @@ class Listings extends Component {
         <div className="row">
           <div className="col-lg-12">
         <section className="search-area">
-          <input type="text" name="search"/>
+          <input type="text" name="search" onChange={this.props.handleChange}/>
         </section>
         </div>
         </div>
